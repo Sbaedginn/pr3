@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
         <html lang="en">
             <body className="bg-white text-black">
                 <Header />
-                <main className="container mx-auto my-4 content">{children}</main>
+                <main className="container mx-auto my-4 px-4 content">{children}</main>
                 <Footer />
             </body>
         </html>
