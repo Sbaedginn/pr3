@@ -1,10 +1,16 @@
-'use client'
 import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import { getFilteredCategory } from '../../lib/api'
+import { getFilteredCategory, getAllCategories } from '../../lib/api'
 import { MealList } from '@/components/meal/MealList'
 import { Preloader } from '@/components/ui/Preloader'
 import Link from 'next/link'
+
+export async function generateStaticParams() {
+    const categories = await getAllCategories() 
+    return categories.map((category) => ({
+        id: category.strCategory
+    }))
+}
 
 export default function CategoryPage() {
     const { id } = useParams()

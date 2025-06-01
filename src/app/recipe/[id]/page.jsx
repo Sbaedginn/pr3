@@ -1,5 +1,12 @@
-import { getMealById } from '../../lib/api'
+import { getMealById, getAllMeals } from '../../lib/api'
 import Link from 'next/link'
+
+export async function generateStaticParams() {
+    const meals = await getAllMeals() 
+    return meals.map((meal) => ({
+        id: meal.idMeal
+    }))
+}
 
 export default async function RecipePage({ params }) {
     const {id} = params
